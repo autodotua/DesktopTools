@@ -1,0 +1,16 @@
+﻿<Window x:Name="window" x:Class="桌面小工具集.Clock"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Clock" Height="200" Width="200"
+        Loaded="window_Loaded_1" SizeChanged="window_SizeChanged"
+                        ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True" WindowStartupLocation="CenterScreen" LocationChanged="window_LocationChanged"
+
+>
+
+    <Canvas x:Name="cv"  MouseLeftButtonDown="cv_MouseLeftButtonDown">
+        <!--<Ellipse x:Name="ellipse"  
+                 Stroke="#FFFFFFFF" StrokeThickness="{Binding ActualWidth,ElementName=cv,Converter={}}" Width="{Binding ActualWidth, ElementName=cv, Mode=OneWay}" Height="{Binding ActualHeight, ElementName=cv, Mode=OneWay}"/>-->
+    </Canvas>
+    
+</Window>
+

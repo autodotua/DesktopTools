@@ -1,0 +1,17 @@
+﻿<Window x:Class="桌面小工具集.WebView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+     xmlns:wfi ="clr-namespace:System.Windows.Forms.Integration;assembly=WindowsFormsIntegration"
+     xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        Title="WebView" Height="300" Width="300"
+        ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None" WindowStartupLocation="CenterScreen" Loaded="window_Loaded_1" MouseLeftButtonDown="Window_MouseLeftButtonDown_1" 
+        >
+    <Grid IsEnabled="False">
+ 
+            <wfi:WindowsFormsHost>
+            <wf:WebBrowser x:Name="wb" Navigated="wb_Navigated" ScriptErrorsSuppressed="True"/>
+        </wfi:WindowsFormsHost >
+      
+      
+    </Grid>
+</Window>

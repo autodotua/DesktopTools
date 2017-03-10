@@ -1,0 +1,12 @@
+﻿<Window x:Class="桌面小工具集.CustomText"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="clock" Height="100" Width="200"
+        Loaded="Window_Loaded_1" SizeChanged="Window_SizeChanged_1"
+                        ResizeMode="NoResize" SizeToContent="Manual" WindowStyle="None" Background="#00FFFFFF" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+
+>
+    <Viewbox MouseLeftButtonDown="Viewbox_MouseLeftButtonDown_1">
+        <TextBlock x:Name="t" Foreground="White"></TextBlock>
+    </Viewbox>
+</Window>

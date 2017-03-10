@@ -1,0 +1,110 @@
+﻿<Window x:Class="桌面小工具集.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings"  Loaded="Window_Loaded_1" Closing="Window_Closing_1" Visibility="Visible" ResizeMode="NoResize" Width="339.2" Height="342.4" WindowStartupLocation="CenterScreen" SizeToContent="WidthAndHeight">
+
+    <Grid Margin="8">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="Auto"/> 
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <GroupBox  Header="Clock" Grid.Row="2">
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <CheckBox x:Name="clockShow" IsChecked="True"  >show</CheckBox>
+                <CheckBox x:Name="clock_ssecond"  Grid.Column="2" >show second</CheckBox>
+                 <WrapPanel Grid.Row="2" Grid.ColumnSpan="4" >
+                    <TextBlock Text="clockSize(px):   "></TextBlock>
+                <Slider x:Name="clockSize" Width="100" Maximum="500" Minimum="50" Value="200" ValueChanged="clockSize_ValueChanged_1"/>
+                </WrapPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="CustomText" Grid.Row="4">
+            
+            <Grid>
+           
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <WrapPanel>
+                    <CheckBox x:Name="customTextShow" Content="show     " IsChecked="True" />
+                    <TextBlock Text="Size(px):   "></TextBlock>
+                    <Slider x:Name="customTextSize" Width="100" Maximum="500" Minimum="50" Value="200"  ValueChanged="customTextSize_ValueChanged_1"/>
+                </WrapPanel>
+                <WrapPanel Grid.Row="2">
+                    <TextBlock Text="Text: "/>
+                    <TextBox x:Name="ud" MinWidth="100" Text="" AcceptsReturn="True" />
+                    
+                </WrapPanel>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Common">
+            <WrapPanel>
+
+                <TextBlock Grid.Column="4" Text="extra hours:   "></TextBlock>
+                <TextBox x:Name="eh" Grid.Column="6"  >8</TextBox>
+                <TextBlock Text="       "/>
+                <CheckBox x:Name="startup" Content="run after system startup" Click="startup_Click"/>
+            </WrapPanel>
+        </GroupBox>   
+
+
+        
+        <GroupBox Header="WebView" Grid.Row="6">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="4"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <WrapPanel>
+                <CheckBox x:Name="webviewShow" IsChecked="True">show</CheckBox>
+                    <TextBlock Text="                               Zoom:"></TextBlock>
+                <Slider x:Name="webviewZoom" Minimum="1" Maximum="100" Value="40" Width="100" ValueChanged="webviewZoom_ValueChanged"></Slider>
+</WrapPanel>
+                <WrapPanel  Grid.Row="2">
+                    <TextBlock>Height:</TextBlock>
+                    <Slider x:Name="webviewHeight" Minimum="1" Maximum="1000" Value="400" Width="100" ValueChanged="webviewHeight_ValueChanged"></Slider>
+                    <TextBlock Text="     Width:"></TextBlock>
+                    <Slider x:Name="webviewWidth" Minimum="1" Maximum="1000" Value="200" Width="100" ValueChanged="webviewWidth_ValueChanged"></Slider>
+
+                </WrapPanel>
+                <WrapPanel Grid.Row="4">
+                    <TextBlock Text="URL:  "></TextBlock>
+                    <TextBox x:Name="webviewURL" Width="267" PreviewKeyDown="webviewURL_PreviewKeyDown"/>
+                </WrapPanel>
+            </Grid>
+           
+        </GroupBox>
+        <Button Content="apply" Grid.Row="8"  Width="75" Margin="152,0,89.8,0.2" Click="SaveWithoutClosing" />
+
+        <Button Content="OK" Grid.Row="8"  Width="75" Margin="232,0,9.8,0.2" Click="saveAllConfig" Height="19" VerticalAlignment="Bottom" />
+    </Grid>
+    
+</Window>
