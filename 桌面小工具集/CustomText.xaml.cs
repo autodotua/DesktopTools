@@ -1,20 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Diagnostics;
-using System.Text.RegularExpressions;
 
 namespace 桌面小工具集
 {
@@ -43,7 +34,7 @@ namespace 桌面小工具集
 
         Dictionary<string, DateTime> setTime = new Dictionary<string, DateTime>();
         string textPart = "", raw = "";
-        //int y, mo, d, h, mi, s;
+        int digitOfDicimal = 0;
         private void Window_Loaded_1(object sender, RoutedEventArgs e)
         {
             IntPtr pWnd = FindWindow("Progman", null);
@@ -84,24 +75,36 @@ namespace 桌面小工具集
             textPart = "";
             foreach (var item in split1)
             {
-                if (item[item.Length - 1] != '#')
+                if (item[item.Length - 1] != '#')//如果是普通文本
                 {
                     textPart += item + "\r\n";
                 }
-                else
+                else//如果是倒计时的设置项
                 {
-                    string[] split2 = item.Remove(item.Length - 1).Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
+                    //分割
+                    string[] split2 = item.Remove(item.Length - 1)/*删除最后一个井号*/.Split(new string[] { "," }, StringSplitOptions.RemoveEmptyEntries);
                     if (split2.Length == 4)
                     {
                         setTime.Add(split2[0], new DateTime(int.Parse(split2[1]), int.Parse(split2[2]), int.Parse(split2[3])));
-                        Debug.WriteLine("OK");
+                        
+                    }
+                    else if (split2.Length == 5)
+                    {
+                        setTime.Add(split2[0], new DateTime(int.Parse(split2[1]), int.Parse(split2[2]), int.Parse(split2[3])));
+                        digitOfDicimal = int.Parse(split2[4]);
                     }
                     else
                         if (split2.Length == 7)
                         {
                             setTime.Add(split2[0], new DateTime(int.Parse(split2[1]), int.Parse(split2[2]), int.Parse(split2[3]), int.Parse(split2[4]), int.Parse(split2[5]), int.Parse(split2[6])));
-                            Debug.WriteLine("OK2");
+                            
                         }
+                    else
+                         if (split2.Length == 8)
+                    {
+                        setTime.Add(split2[0], new DateTime(int.Parse(split2[1]), int.Parse(split2[2]), int.Parse(split2[3]), int.Parse(split2[4]), int.Parse(split2[5]), int.Parse(split2[6])));
+                        digitOfDicimal = int.Parse(split2[7]);
+                    }
                 }
             }
         }
@@ -156,25 +159,25 @@ namespace 桌面小工具集
                                 target = target.Replace(r.Match(target).Captures[0].Value, j.Value.Days.ToString());
                                 break;
                             case "TotalDays":
-                                target = target.Replace(r.Match(target).Captures[0].Value, j.Value.TotalDays.ToString());
+                                target = target.Replace(r.Match(target).Captures[0].Value, Math.Round(j.Value.TotalDays, digitOfDicimal).ToString());
                                 break;
                             case "Hours":
                                 target = target.Replace(r.Match(target).Captures[0].Value, j.Value.Hours.ToString());
                                 break;
                             case "TotalHours":
-                                target = target.Replace(r.Match(target).Captures[0].Value, j.Value.TotalHours.ToString());
+                                target = target.Replace(r.Match(target).Captures[0].Value, Math.Round(j.Value.TotalHours,digitOfDicimal).ToString());
                                 break;
                             case "Minutes":
                                 target = target.Replace(r.Match(target).Captures[0].Value, j.Value.Minutes.ToString());
                                 break;
                             case "TotalMinutes":
-                                target = target.Replace(r.Match(target).Captures[0].Value, j.Value.TotalMinutes.ToString());
+                                target = target.Replace(r.Match(target).Captures[0].Value, Math.Round(j.Value.TotalMinutes, digitOfDicimal).ToString());
                                 break;
                             case "Seconds":
                                 target = target.Replace(r.Match(target).Captures[0].Value, j.Value.Seconds.ToString());
                                 break;
                             case "TotalSeconds":
-                                target = target.Replace(r.Match(target).Captures[0].Value, j.Value.TotalSeconds.ToString());
+                                target = target.Replace(r.Match(target).Captures[0].Value, Math.Round(j.Value.TotalSeconds, digitOfDicimal).ToString());
                                 break;
 
                         }

@@ -29,7 +29,7 @@
                     <ColumnDefinition Width="16"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                <CheckBox x:Name="clockShow" IsChecked="True"  >show</CheckBox>
+                <CheckBox x:Name="clockShow" IsChecked="False"  >show</CheckBox>
                 <CheckBox x:Name="clock_ssecond"  Grid.Column="2" >show second</CheckBox>
                  <WrapPanel Grid.Row="2" Grid.ColumnSpan="4" >
                     <TextBlock Text="clockSize(px):   "></TextBlock>
@@ -51,7 +51,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <WrapPanel>
-                    <CheckBox x:Name="customTextShow" Content="show     " IsChecked="True" />
+                    <CheckBox x:Name="customTextShow" Content="show     " IsChecked="False" />
                     <TextBlock Text="Size(px):   "></TextBlock>
                     <Slider x:Name="customTextSize" Width="100" Maximum="500" Minimum="50" Value="200"  ValueChanged="customTextSize_ValueChanged_1"/>
                 </WrapPanel>
@@ -74,7 +74,7 @@
 
 
         
-        <GroupBox Header="WebView" Grid.Row="6">
+        <GroupBox Header="WebView" Grid.Row="6" IsEnabled="False">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
@@ -84,7 +84,7 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <WrapPanel>
-                <CheckBox x:Name="webviewShow" IsChecked="True">show</CheckBox>
+                <CheckBox x:Name="webviewShow" IsChecked="False">show</CheckBox>
                     <TextBlock Text="                               Zoom:"></TextBlock>
                 <Slider x:Name="webviewZoom" Minimum="1" Maximum="100" Value="40" Width="100" ValueChanged="webviewZoom_ValueChanged"></Slider>
 </WrapPanel>

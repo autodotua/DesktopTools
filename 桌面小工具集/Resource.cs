@@ -53,7 +53,7 @@ namespace 桌面小工具集
 
 
             WebView_URL = (getConfig("webView_URL") == null ? "www.baidu.com" : getConfig("webView_URL"));
-            WebView_Show = (getConfig("webView_show") == null ? 1 : int.Parse(getConfig("webView_show")));
+            WebView_Show = (getConfig("webView_show") == null ? 0 : int.Parse(getConfig("webView_show")));
 
 
 

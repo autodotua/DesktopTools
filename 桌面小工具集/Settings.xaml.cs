@@ -142,26 +142,29 @@ namespace 桌面小工具集
             //opened = true;
             w_c = new Clock();
             w_ct = new CustomText();
-            w_wv = new WebView();
-            w_c.Show();
-            w_ct.Show();
-            w_wv.Show();
-            if (Resource.Clock_Show == 0)
+            //w_wv = new WebView();
+            //w_c.Show();
+            //w_ct.Show();
+            //w_wv.Show();
+            if (Resource.Clock_Show ==1)
             {
-                clockShow.IsChecked = false;
-                w_c.Hide();
+                clockShow.IsChecked = true;
+                //w_c.Hide();
+                w_c.Show();
             }
-            if (Resource.CustomText_Show == 0)
+            if (Resource.CustomText_Show ==1)
             {
-                customTextShow.IsChecked = false;
-                w_ct.Hide();
+                customTextShow.IsChecked = true;
+                //w_ct.Hide();
+                w_ct.Show();
             }
-            if (Resource.WebView_Show == 0)
-            {
+            //if (Resource.WebView_Show == 1)
+            //{
 
-                webviewShow.IsChecked = false;
-                w_wv.Hide();
-            }
+            //    webviewShow.IsChecked = false;
+            //    //w_wv.Hide();
+            //    w_wv.Show();
+            //}
 
 
             clock_ssecond.IsChecked = (Resource.Clock_ShowSecond == 1 ? true : false);
@@ -181,8 +184,8 @@ namespace 桌面小工具集
             w_c.Top = double.Parse(Resource.Clock_Location.Split('|')[1]);
             w_ct.Left = double.Parse(Resource.CustomText_Location.Split('|')[0]);
             w_ct.Top = double.Parse(Resource.CustomText_Location.Split('|')[1]);
-            w_wv.Left = double.Parse(Resource.WebView_Location.Split('|')[0]);
-            w_wv.Top = double.Parse(Resource.WebView_Location.Split('|')[1]);
+            //w_wv.Left = double.Parse(Resource.WebView_Location.Split('|')[0]);
+            //w_wv.Top = double.Parse(Resource.WebView_Location.Split('|')[1]);
 
 
             string Path = Environment.GetFolderPath(Environment.SpecialFolder.Startup);// System.Environment.GetFolderPath(System.Environment.SpecialFolder.Desktop) + "\\新建文件夹 (3)"; //"%USERPROFILE%\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup";
